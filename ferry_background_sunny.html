@@ -1,0 +1,445 @@
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .scene {
+    width: 100%;
+    height: 520px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #4fc3f7 0%, #81d4fa 25%, #b3e5fc 50%, #e1f5fe 65%, #ffffff 72%);
+  }
+
+  /* Sun */
+  .sun {
+    position: absolute;
+    top: 38px; right: 140px;
+    width: 72px; height: 72px;
+    background: radial-gradient(circle at 50% 50%, #fff7d6, #ffd740 60%, #ffab00);
+    border-radius: 50%;
+    box-shadow: 0 0 0 12px rgba(255,215,64,0.15), 0 0 0 28px rgba(255,215,64,0.08), 0 0 80px 30px rgba(255,200,0,0.18);
+    animation: sunPulse 5s ease-in-out infinite;
+    z-index: 2;
+  }
+  @keyframes sunPulse {
+    0%,100% { box-shadow: 0 0 0 12px rgba(255,215,64,0.15), 0 0 0 28px rgba(255,215,64,0.08), 0 0 80px 30px rgba(255,200,0,0.18); }
+    50%      { box-shadow: 0 0 0 18px rgba(255,215,64,0.20), 0 0 0 38px rgba(255,215,64,0.10), 0 0 100px 40px rgba(255,200,0,0.22); }
+  }
+
+  /* Sun rays */
+  .sun-rays {
+    position: absolute;
+    top: 10px; right: 112px;
+    width: 128px; height: 128px;
+    animation: raysRotate 18s linear infinite;
+    z-index: 1;
+  }
+  .sun-rays::before, .sun-rays::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,220,50,0.4), transparent);
+    transform-origin: center;
+    border-radius: 2px;
+  }
+  .sun-rays::before { transform: translate(-50%,-50%) rotate(0deg); }
+  .sun-rays::after  { transform: translate(-50%,-50%) rotate(45deg); }
+  @keyframes raysRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+  /* Sky gradient bands */
+  .sky-haze {
+    position: absolute; top: 0; left: 0; width: 100%; height: 60%;
+    background: radial-gradient(ellipse at 78% 20%, rgba(255,230,100,0.12) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* Clouds */
+  .cloud {
+    position: absolute;
+    border-radius: 50px;
+    background: #fff;
+    animation: cloudDrift linear infinite;
+  }
+  .cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .c1 { top: 55px; height: 28px; width: 110px; animation-duration: 60s; animation-delay: -10s; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .c1::before { width: 55px; height: 45px; top: -22px; left: 18px; }
+  .c1::after  { width: 40px; height: 35px; top: -16px; left: 52px; }
+
+  .c2 { top: 30px; height: 22px; width: 85px; animation-duration: 75s; animation-delay: -30s; opacity: 0.9; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .c2::before { width: 40px; height: 36px; top: -18px; left: 12px; }
+  .c2::after  { width: 32px; height: 28px; top: -13px; left: 40px; }
+
+  .c3 { top: 80px; height: 20px; width: 70px; animation-duration: 50s; animation-delay: -5s; opacity: 0.85; box-shadow: 0 3px 8px rgba(0,0,0,0.05); }
+  .c3::before { width: 34px; height: 30px; top: -14px; left: 10px; }
+  .c3::after  { width: 26px; height: 22px; top: -10px; left: 34px; }
+
+  .c4 { top: 42px; height: 18px; width: 60px; animation-duration: 85s; animation-delay: -50s; opacity: 0.8; }
+  .c4::before { width: 28px; height: 26px; top: -12px; left: 8px; }
+  .c4::after  { width: 22px; height: 20px; top: -9px; left: 30px; }
+
+  .c5 { top: 20px; height: 16px; width: 50px; animation-duration: 65s; animation-delay: -20s; opacity: 0.75; }
+  .c5::before { width: 24px; height: 22px; top: -10px; left: 7px; }
+  .c5::after  { width: 18px; height: 16px; top: -7px; left: 26px; }
+
+  @keyframes cloudDrift {
+    0%   { left: -200px; }
+    100% { left: 110%; }
+  }
+
+  /* Horizon land/hills */
+  .hills {
+    position: absolute;
+    bottom: 175px; left: 0; width: 100%; height: 60px;
+    z-index: 3;
+  }
+  .hills svg { display: block; width: 100%; height: 100%; }
+
+  /* Sea */
+  .sea {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 190px;
+    background: linear-gradient(180deg, #29b6f6 0%, #0288d1 35%, #0277bd 70%, #01579b 100%);
+    z-index: 4;
+  }
+
+  /* Sea sparkle overlay */
+  .sea-sparkle {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background:
+      radial-gradient(1.5px 1.5px at 15% 30%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88% 40%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 80%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 50%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 80% 25%, rgba(255,255,255,0.6) 0%, transparent 100%);
+    animation: sparkleShift 3s ease-in-out infinite alternate;
+  }
+  @keyframes sparkleShift {
+    0%   { opacity: 0.5; transform: translateX(0); }
+    100% { opacity: 1;   transform: translateX(8px); }
+  }
+
+  /* Sun path on water */
+  .sun-path {
+    position: absolute;
+    top: 0; right: 80px;
+    width: 160px; height: 100%;
+    background: linear-gradient(180deg, rgba(255,235,100,0.35) 0%, rgba(255,220,80,0.12) 60%, transparent 100%);
+    border-radius: 50%;
+    filter: blur(8px);
+    animation: sunPathSway 4s ease-in-out infinite;
+  }
+  @keyframes sunPathSway {
+    0%,100% { transform: scaleX(1); opacity: 0.8; }
+    50%      { transform: scaleX(1.4); opacity: 1; }
+  }
+
+  /* Waves */
+  .waves-container {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 190px;
+    overflow: hidden; z-index: 5;
+  }
+  .wave {
+    position: absolute;
+    width: 200%; left: -50%;
+    border-radius: 50% 50% 0 0;
+    animation: waveFlow linear infinite;
+  }
+  .wave1 { bottom: 130px; height: 28px; background: rgba(255,255,255,0.12); animation-duration: 7s; }
+  .wave2 { bottom: 110px; height: 24px; background: rgba(255,255,255,0.10); animation-duration: 9s;  animation-delay: -3s; }
+  .wave3 { bottom: 85px;  height: 28px; background: rgba(255,255,255,0.13); animation-duration: 6s;  animation-delay: -1s; }
+  .wave4 { bottom: 58px;  height: 32px; background: rgba(255,255,255,0.11); animation-duration: 10s; animation-delay: -5s; }
+  .wave5 { bottom: 30px;  height: 36px; background: rgba(255,255,255,0.14); animation-duration: 8s;  animation-delay: -2s; }
+  .wave6 { bottom: 0;     height: 42px; background: rgba(255,255,255,0.10); animation-duration: 12s; animation-delay: -4s; }
+  @keyframes waveFlow {
+    0%   { transform: translateX(0) scaleY(1); }
+    50%  { transform: translateX(10%) scaleY(1.05); }
+    100% { transform: translateX(20%) scaleY(1); }
+  }
+
+  /* Shimmer lines */
+  .shimmer-lines { position: absolute; bottom: 0; left: 0; width: 100%; height: 140px; overflow: hidden; z-index: 6; }
+  .shimmer-line {
+    position: absolute; left: 0; width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), rgba(255,255,255,0.8), rgba(255,255,255,0.5), transparent);
+    animation: shimmerMove linear infinite; border-radius: 50%;
+  }
+  .sl1 { bottom: 90px; animation-duration: 4s;   animation-delay: 0s; }
+  .sl2 { bottom: 68px; animation-duration: 5s;   animation-delay: -1.5s; }
+  .sl3 { bottom: 50px; animation-duration: 3.5s; animation-delay: -2s; }
+  .sl4 { bottom: 33px; animation-duration: 6s;   animation-delay: -0.5s; }
+  .sl5 { bottom: 16px; animation-duration: 4.5s; animation-delay: -3s; }
+  @keyframes shimmerMove {
+    0%   { transform: translateX(-60%) scaleX(0.4); opacity: 0; }
+    20%  { opacity: 0.6; }
+    80%  { opacity: 0.6; }
+    100% { transform: translateX(60%) scaleX(0.4); opacity: 0; }
+  }
+
+  /* Brand shimmer */
+  .brand-shimmer-line {
+    position: absolute; width: 35%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(231,74,67,0.5), rgba(231,74,67,0.7), rgba(231,74,67,0.5), transparent);
+    animation: brandShimmerMove linear infinite; border-radius: 50%;
+    z-index: 7;
+  }
+  .bsl1 { bottom: 78px; animation-duration: 5.5s; animation-delay: -1s; }
+  .bsl2 { bottom: 55px; animation-duration: 7s;   animation-delay: -3.5s; }
+  .bsl3 { bottom: 38px; animation-duration: 4.5s; animation-delay: -2.2s; }
+  @keyframes brandShimmerMove {
+    0%   { left: -35%; opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { left: 110%; opacity: 0; }
+  }
+
+  /* Wake trail */
+  .wake {
+    position: absolute;
+    bottom: 112px; left: -320px;
+    width: 320px; height: 18px;
+    animation: wakeMove 26s linear infinite;
+    z-index: 8; pointer-events: none;
+  }
+  @keyframes wakeMove {
+    0%   { left: -660px; }
+    100% { left: calc(110% - 320px); }
+  }
+
+  /* Ferry */
+  .ferry-wrap {
+    position: absolute;
+    bottom: 106px; left: -340px;
+    width: 340px;
+    animation: ferryMove 26s linear infinite;
+    z-index: 9;
+  }
+  @keyframes ferryMove {
+    0%   { left: -340px; }
+    100% { left: 110%; }
+  }
+
+  /* Seagulls */
+  .gull { position: absolute; animation: gullFly linear infinite; z-index: 10; }
+  .g1 { top: 95px;  animation-duration: 20s; animation-delay: -4s; }
+  .g2 { top: 75px;  animation-duration: 26s; animation-delay: -9s; }
+  .g3 { top: 120px; animation-duration: 16s; animation-delay: -13s; }
+  .g4 { top: 55px;  animation-duration: 30s; animation-delay: -6s; }
+  .g5 { top: 108px; animation-duration: 22s; animation-delay: -18s; }
+  @keyframes gullFly {
+    0%   { left: -80px; }
+    100% { left: 110%; }
+  }
+
+  /* Lighthouse */
+  .lighthouse {
+    position: absolute;
+    bottom: 175px; left: 70px;
+    z-index: 4;
+  }
+  .lh-beam {
+    position: absolute;
+    bottom: 24px; left: 4px;
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 100px solid rgba(231,74,67,0.12);
+    transform-origin: bottom center;
+    animation: beamRotate 5s ease-in-out infinite;
+  }
+  @keyframes beamRotate {
+    0%,100% { transform: rotate(-35deg); opacity: 0.25; }
+    50%      { transform: rotate(35deg);  opacity: 0.6; }
+  }
+  .lh-body { width: 18px; height: 34px; background: linear-gradient(180deg, #f5f5f5, #cdd0d8); border-radius: 2px 2px 0 0; position: relative; z-index: 2; }
+  .lh-stripe { position: absolute; top: 8px; left: 0; width: 18px; height: 5px; background: rgba(231,74,67,0.6); }
+  .lh-stripe2 { position: absolute; top: 20px; left: 0; width: 18px; height: 5px; background: rgba(231,74,67,0.4); }
+  .lh-top { width: 22px; height: 12px; background: #E74A43; border-radius: 3px 3px 0 0; margin-left: -2px; position: relative; z-index: 2; box-shadow: 0 0 14px rgba(231,74,67,0.5); }
+
+  /* Foam */
+  .foam { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.8); animation: foamRise linear infinite; z-index: 6; }
+  @keyframes foamRise {
+    0%   { transform: translateY(0) scale(1); opacity: 0.7; }
+    100% { transform: translateY(-28px) scale(0.2); opacity: 0; }
+  }
+
+  /* Distant sailboat */
+  .sailboat {
+    position: absolute;
+    bottom: 178px; left: 20%;
+    z-index: 4;
+    animation: sailDrift 40s linear infinite;
+    opacity: 0.65;
+  }
+  @keyframes sailDrift {
+    0%   { left: 15%; }
+    100% { left: 55%; }
+  }
+</style>
+
+<div class="scene">
+  <div class="sky-haze"></div>
+  <div class="sun-rays"></div>
+  <div class="sun"></div>
+
+  <!-- Clouds -->
+  <div class="cloud c1" style="left:8%"></div>
+  <div class="cloud c2" style="left:40%"></div>
+  <div class="cloud c3" style="left:65%"></div>
+  <div class="cloud c4" style="left:20%"></div>
+  <div class="cloud c5" style="left:82%"></div>
+
+  <!-- Rolling hills on horizon -->
+  <div class="hills">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 Q80,10 180,35 Q280,55 380,18 Q480,0 560,28 Q640,50 750,15 Q860,0 950,30 Q1040,55 1100,20 Q1150,5 1200,28 L1200,60 Z" fill="#a5d6a7" opacity="0.85"/>
+      <path d="M0,60 Q60,30 130,45 Q200,58 300,35 Q380,18 460,40 Q540,58 620,30 Q700,10 800,38 Q880,56 960,28 Q1040,8 1120,38 Q1160,52 1200,35 L1200,60 Z" fill="#81c784" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <!-- Distant sailboat -->
+  <div class="sailboat">
+    <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15,28 L15,5 L4,24 Z" fill="rgba(255,255,255,0.7)"/>
+      <path d="M15,28 L15,8 L24,22 Z" fill="rgba(231,74,67,0.6)"/>
+      <path d="M6,27 L24,27 Q22,29 15,29 Q8,29 6,27 Z" fill="#1a3a6e"/>
+    </svg>
+  </div>
+
+  <div class="sea">
+    <div class="sea-sparkle"></div>
+    <div class="sun-path"></div>
+  </div>
+
+  <div class="waves-container">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    <div class="wave wave4"></div>
+    <div class="wave wave5"></div>
+    <div class="wave wave6"></div>
+  </div>
+
+  <div class="shimmer-lines">
+    <div class="shimmer-line sl1"></div>
+    <div class="shimmer-line sl2"></div>
+    <div class="shimmer-line sl3"></div>
+    <div class="shimmer-line sl4"></div>
+    <div class="shimmer-line sl5"></div>
+    <div class="brand-shimmer-line bsl1"></div>
+    <div class="brand-shimmer-line bsl2"></div>
+    <div class="brand-shimmer-line bsl3"></div>
+  </div>
+
+  <!-- Lighthouse -->
+  <div class="lighthouse">
+    <div class="lh-beam"></div>
+    <div class="lh-top"></div>
+    <div class="lh-body">
+      <div class="lh-stripe"></div>
+      <div class="lh-stripe2"></div>
+    </div>
+  </div>
+
+  <!-- Wake trail -->
+  <svg class="wake" viewBox="0 0 320 18" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,9 Q80,2 160,9 Q240,16 320,9" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+    <path d="M0,13 Q80,5 160,13 Q240,18 320,13" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+  </svg>
+
+  <!-- Ferry -->
+  <div class="ferry-wrap">
+    <svg width="340" height="110" viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg">
+      <!-- Hull -->
+      <path d="M10,70 Q30,90 60,92 L280,92 Q310,90 330,70 Z" fill="#1e3560" stroke="#2a4e8c" stroke-width="1"/>
+      <!-- White hull upper -->
+      <rect x="40" y="50" width="260" height="22" rx="3" fill="#f0f4ff"/>
+      <!-- Brand red stripe -->
+      <rect x="40" y="68" width="260" height="4" rx="0" fill="#E74A43"/>
+      <!-- Superstructure lower -->
+      <rect x="80" y="28" width="180" height="24" rx="4" fill="#e8eef8"/>
+      <!-- Superstructure upper / bridge -->
+      <rect x="110" y="10" width="80" height="20" rx="3" fill="#f5f8ff"/>
+      <!-- Bridge windows -->
+      <rect x="116" y="14" width="10" height="9" rx="2" fill="#7ecfff" opacity="0.85"/>
+      <rect x="130" y="14" width="10" height="9" rx="2" fill="#7ecfff" opacity="0.85"/>
+      <rect x="144" y="14" width="10" height="9" rx="2" fill="#7ecfff" opacity="0.85"/>
+      <rect x="158" y="14" width="10" height="9" rx="2" fill="#7ecfff" opacity="0.85"/>
+      <rect x="172" y="14" width="10" height="9" rx="2" fill="#7ecfff" opacity="0.85"/>
+      <!-- Funnel brand color -->
+      <rect x="145" y="4" width="14" height="10" rx="2" fill="#c0392b"/>
+      <rect x="147" y="2" width="10" height="6" rx="2" fill="#E74A43"/>
+      <!-- Funnel smoke puffs -->
+      <circle cx="152" cy="-2" r="4" fill="rgba(220,220,220,0.55)" style="animation: none"/>
+      <circle cx="155" cy="-9" r="5" fill="rgba(200,200,200,0.38)"/>
+      <circle cx="150" cy="-15" r="6" fill="rgba(180,180,180,0.22)"/>
+      <!-- Passenger deck windows -->
+      <rect x="90"  y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="104" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="118" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="132" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="146" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="160" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="174" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="188" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="202" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="216" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="230" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <rect x="244" y="33" width="8" height="7" rx="1.5" fill="#b3e0f7" opacity="0.9"/>
+      <!-- Mast -->
+      <line x1="152" y1="4" x2="152" y2="-1" stroke="#888" stroke-width="1.5"/>
+      <!-- Bow light -->
+      <circle cx="328" cy="72" r="2.5" fill="#E74A43" opacity="0.8"/>
+      <!-- Water reflection -->
+      <ellipse cx="170" cy="92" rx="130" ry="4" fill="rgba(255,255,255,0.15)"/>
+    </svg>
+  </div>
+
+  <!-- Seagulls -->
+  <div class="gull g1">
+    <svg width="34" height="14" viewBox="0 0 34 14" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1,8 Q9,1 17,5 Q25,1 33,8" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="gull g2">
+    <svg width="24" height="10" viewBox="0 0 24 10" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1,6 Q6,1 12,4 Q18,1 23,6" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="gull g3">
+    <svg width="28" height="12" viewBox="0 0 28 12" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1,7 Q7,1 14,4 Q21,1 27,7" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="gull g4">
+    <svg width="18" height="8" viewBox="0 0 18 8" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1,5 Q5,1 9,3 Q13,1 17,5" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="gull g5">
+    <svg width="20" height="9" viewBox="0 0 20 9" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1,5 Q5,1 10,3 Q15,1 19,5" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div id="foamContainer"></div>
+</div>
+
+<script>
+  const fc = document.getElementById('foamContainer');
+  for (let i = 0; i < 16; i++) {
+    const f = document.createElement('div');
+    const size = 2 + Math.random() * 5;
+    f.style.cssText = `position:absolute;width:${size}px;height:${size}px;left:${Math.random()*100}%;bottom:${8+Math.random()*90}px;border-radius:50%;background:rgba(255,255,255,0.85);animation:foamRise ${2+Math.random()*3}s linear -${Math.random()*4}s infinite;opacity:${(0.4+Math.random()*0.4).toFixed(2)};z-index:6;`;
+    fc.appendChild(f);
+  }
+</script>

@@ -1,0 +1,113 @@
+[22-Jan-2026 05:58:46 UTC] === SEARCH-RESULT.PHP DEBUG ===
+[22-Jan-2026 05:58:46 UTC] Session ID: 24f41fadbfbda62cbde72a6501168469
+[22-Jan-2026 05:58:46 UTC] search_results keys: departDate, departTimeRegion, departPortOriginId, departPortOriginName, departPortDestinationId, departPortDestinationName, isRoundTrip, isOpenReturnTrip, returnDate, returnTimeRegion, returnPortOriginID, returnPortOriginName, returnPortDestinationID, returnPortDestinationName, cabinClass, adultQty, childQty, infantQty, departTrips, returnTrips
+[22-Jan-2026 05:58:46 UTC] isRoundTrip value: true
+[22-Jan-2026 05:58:46 UTC] search_params trip_type: round_trip
+[22-Jan-2026 05:58:46 UTC] GET parameters: Array
+(
+)
+
+[22-Jan-2026 05:58:46 UTC] === END DEBUG ===
+[22-Jan-2026 05:58:50 UTC] === SEARCH-RESULT.PHP DEBUG ===
+[22-Jan-2026 05:58:50 UTC] Session ID: 24f41fadbfbda62cbde72a6501168469
+[22-Jan-2026 05:58:50 UTC] search_results keys: departDate, departTimeRegion, departPortOriginId, departPortOriginName, departPortDestinationId, departPortDestinationName, isRoundTrip, isOpenReturnTrip, returnDate, returnTimeRegion, returnPortOriginID, returnPortOriginName, returnPortDestinationID, returnPortDestinationName, cabinClass, adultQty, childQty, infantQty, departTrips, returnTrips
+[22-Jan-2026 05:58:50 UTC] isRoundTrip value: true
+[22-Jan-2026 05:58:50 UTC] search_params trip_type: round_trip
+[22-Jan-2026 05:58:50 UTC] GET parameters: Array
+(
+    [trip_id] => 260127HFCSKP0820
+    [type] => departure
+    [price] => 38
+    [currency] => SGD
+    [passengers] => 1
+)
+
+[22-Jan-2026 05:58:50 UTC] === END DEBUG ===
+[22-Jan-2026 05:58:50 UTC] DEBUG: Trip selected - Type: departure, Trip ID: 260127HFCSKP0820
+[22-Jan-2026 05:58:50 UTC] DEBUG: isRoundTrip determined as: true
+[22-Jan-2026 05:58:50 UTC] DEBUG: Round trip flow selected
+[22-Jan-2026 05:58:50 UTC] DEBUG: Has departure: true
+[22-Jan-2026 05:58:50 UTC] DEBUG: Has return: true
+[22-Jan-2026 05:58:50 UTC] DEBUG: Both selected, redirecting to booking-review.php
+[22-Jan-2026 05:58:54 UTC] === SEARCH-RESULT.PHP DEBUG ===
+[22-Jan-2026 05:58:54 UTC] Session ID: 24f41fadbfbda62cbde72a6501168469
+[22-Jan-2026 05:58:54 UTC] search_results keys: departDate, departTimeRegion, departPortOriginId, departPortOriginName, departPortDestinationId, departPortDestinationName, isRoundTrip, isOpenReturnTrip, returnDate, returnTimeRegion, returnPortOriginID, returnPortOriginName, returnPortDestinationID, returnPortDestinationName, cabinClass, adultQty, childQty, infantQty, departTrips, returnTrips
+[22-Jan-2026 05:58:54 UTC] isRoundTrip value: true
+[22-Jan-2026 05:58:54 UTC] search_params trip_type: round_trip
+[22-Jan-2026 05:58:54 UTC] GET parameters: Array
+(
+    [trip_id] => 260127HFCSKP1730
+    [type] => departure
+    [price] => 38
+    [currency] => SGD
+    [passengers] => 1
+)
+
+[22-Jan-2026 05:58:54 UTC] === END DEBUG ===
+[22-Jan-2026 05:58:54 UTC] DEBUG: Trip selected - Type: departure, Trip ID: 260127HFCSKP1730
+[22-Jan-2026 05:58:54 UTC] DEBUG: isRoundTrip determined as: true
+[22-Jan-2026 05:58:54 UTC] DEBUG: Round trip flow selected
+[22-Jan-2026 05:58:54 UTC] DEBUG: Has departure: true
+[22-Jan-2026 05:58:54 UTC] DEBUG: Has return: true
+[22-Jan-2026 05:58:54 UTC] DEBUG: Both selected, redirecting to booking-review.php
+[22-Jan-2026 05:59:00 UTC] === SEARCH-RESULT.PHP DEBUG ===
+[22-Jan-2026 05:59:00 UTC] Session ID: 24f41fadbfbda62cbde72a6501168469
+[22-Jan-2026 05:59:00 UTC] search_results keys: message, isRoundTrip
+[22-Jan-2026 05:59:00 UTC] isRoundTrip value: true
+[22-Jan-2026 05:59:00 UTC] search_params trip_type: round_trip
+[22-Jan-2026 05:59:00 UTC] GET parameters: Array
+(
+)
+
+[22-Jan-2026 05:59:00 UTC] === END DEBUG ===
+[22-Jan-2026 05:59:04 UTC] === SEARCH-RESULT.PHP DEBUG ===
+[22-Jan-2026 05:59:04 UTC] Session ID: 24f41fadbfbda62cbde72a6501168469
+[22-Jan-2026 05:59:04 UTC] search_results keys: message, isRoundTrip
+[22-Jan-2026 05:59:04 UTC] isRoundTrip value: true
+[22-Jan-2026 05:59:04 UTC] search_params trip_type: round_trip
+[22-Jan-2026 05:59:04 UTC] GET parameters: Array
+(
+)
+
+[22-Jan-2026 05:59:04 UTC] === END DEBUG ===
+[22-Jan-2026 05:59:08 UTC] === SEARCH-RESULT.PHP DEBUG ===
+[22-Jan-2026 05:59:08 UTC] Session ID: 24f41fadbfbda62cbde72a6501168469
+[22-Jan-2026 05:59:08 UTC] search_results keys: message, isRoundTrip
+[22-Jan-2026 05:59:08 UTC] isRoundTrip value: true
+[22-Jan-2026 05:59:08 UTC] search_params trip_type: round_trip
+[22-Jan-2026 05:59:08 UTC] GET parameters: Array
+(
+)
+
+[22-Jan-2026 05:59:08 UTC] === END DEBUG ===
+[22-Jan-2026 05:59:16 UTC] === SEARCH-RESULT.PHP DEBUG ===
+[22-Jan-2026 05:59:16 UTC] Session ID: 24f41fadbfbda62cbde72a6501168469
+[22-Jan-2026 05:59:16 UTC] search_results keys: departDate, departTimeRegion, departPortOriginId, departPortOriginName, departPortDestinationId, departPortDestinationName, isRoundTrip, isOpenReturnTrip, returnDate, returnTimeRegion, returnPortOriginID, returnPortOriginName, returnPortDestinationID, returnPortDestinationName, cabinClass, adultQty, childQty, infantQty, departTrips, returnTrips
+[22-Jan-2026 05:59:16 UTC] isRoundTrip value: true
+[22-Jan-2026 05:59:16 UTC] search_params trip_type: round_trip
+[22-Jan-2026 05:59:16 UTC] GET parameters: Array
+(
+)
+
+[22-Jan-2026 05:59:16 UTC] === END DEBUG ===
+[22-Jan-2026 05:59:37 UTC] === SEARCH-RESULT.PHP DEBUG ===
+[22-Jan-2026 05:59:37 UTC] Session ID: 24f41fadbfbda62cbde72a6501168469
+[22-Jan-2026 05:59:37 UTC] search_results keys: departDate, departTimeRegion, departPortOriginId, departPortOriginName, departPortDestinationId, departPortDestinationName, isRoundTrip, isOpenReturnTrip, returnDate, returnTimeRegion, returnPortOriginID, returnPortOriginName, returnPortDestinationID, returnPortDestinationName, cabinClass, adultQty, childQty, infantQty, departTrips, returnTrips
+[22-Jan-2026 05:59:37 UTC] isRoundTrip value: true
+[22-Jan-2026 05:59:37 UTC] search_params trip_type: round_trip
+[22-Jan-2026 05:59:37 UTC] GET parameters: Array
+(
+    [trip_id] => 260130HFCBTC0920
+    [type] => departure
+    [price] => 38
+    [currency] => SGD
+    [passengers] => 1
+)
+
+[22-Jan-2026 05:59:37 UTC] === END DEBUG ===
+[22-Jan-2026 05:59:37 UTC] DEBUG: Trip selected - Type: departure, Trip ID: 260130HFCBTC0920
+[22-Jan-2026 05:59:37 UTC] DEBUG: isRoundTrip determined as: true
+[22-Jan-2026 05:59:37 UTC] DEBUG: Round trip flow selected
+[22-Jan-2026 05:59:37 UTC] DEBUG: Has departure: true
+[22-Jan-2026 05:59:37 UTC] DEBUG: Has return: true
+[22-Jan-2026 05:59:37 UTC] DEBUG: Both selected, redirecting to booking-review.php

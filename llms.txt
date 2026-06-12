@@ -1,0 +1,11 @@
+Generated manually to help LLMs better understand and index this website.
+
+# Batam Ferry Tickets: Skip the counter queues by booking your Singapore to Batam ferry tickets online. Access updated ferry schedules and all Batam Fast ferry routes with ease. Enjoy instant confirmation and secure payments through our reliable platform. Book your ferry tickets directly today!
+
+## Sitemaps
+[XML Sitemap](https://batamferrytickets.com/sitemap.xml): Includes all crawlable and indexable pages.
+
+## Post 
+## Pages
+- [Homepage](https://batamferrytickets.com//): Batam Ferry Tickets | Online Ferry Booking with 10% OFF | VTL Travel Ferry Tickets
+- [Contact Us](https://batamferrytickets.com/contact-us): Get in Touch: Have questions about ferry bookings, schedules, or need assistance? Our team is here to help you 24/7.

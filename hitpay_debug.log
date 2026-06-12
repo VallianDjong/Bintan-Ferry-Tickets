@@ -1,0 +1,568 @@
+
+=== 2026-03-25 01:13:46 ===
+Raw Input: {"booking_id":"12233661","amount":"43","currency":"SGD","email":"valldjong@gmail.com","name":"testbooking","phone":"32432442","purpose":"Ferry Ticket Booking #12233661","payment_method":"card"}
+Decoded Data: Array
+(
+    [booking_id] => 12233661
+    [amount] => 43
+    [currency] => SGD
+    [email] => valldjong@gmail.com
+    [name] => testbooking
+    [phone] => 32432442
+    [purpose] => Ferry Ticket Booking #12233661
+    [payment_method] => card
+)
+
+Request URL: https://api.hit-pay.com/v1/payment-requests
+Request Data: {
+    "amount": "43.00",
+    "currency": "sgd",
+    "payment_methods": [
+        "card"
+    ],
+    "generate_qr": true,
+    "name": "testbooking",
+    "email": "valldjong@gmail.com",
+    "phone": "32432442",
+    "reference_number": "BOOK-12233661-1774401226",
+    "purpose": "Ferry Ticket Booking #12233661",
+    "redirect_url": "https:\/\/batamferrytickets.com\/payment-success.php",
+    "webhook": "https:\/\/batamferrytickets.com\/payment-webhook.php",
+    "send_email": true,
+    "send_sms": true,
+    "allow_repeated_payments": false
+}
+CURL Verbose Output:
+* Host api.hit-pay.com:443 was resolved.
+* IPv6: 2606:4700:10::6814:155b, 2606:4700:10::ac42:aa37
+* IPv4: 104.20.21.91, 172.66.170.55
+*   Trying [2606:4700:10::6814:155b]:443...
+* Immediate connect fail for 2606:4700:10::6814:155b: Cannot assign requested address
+*   Trying [2606:4700:10::ac42:aa37]:443...
+* Immediate connect fail for 2606:4700:10::ac42:aa37: Cannot assign requested address
+*   Trying 104.20.21.91:443...
+* ALPN: curl offers h2,http/1.1
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519MLKEM768 / RSASSA-PSS
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=hit-pay.com
+*  start date: Dec 20 10:38:35 2025 GMT
+*  expire date: Jan 21 10:38:35 2027 GMT
+*  subjectAltName: host "api.hit-pay.com" matched cert's "api.hit-pay.com"
+*  issuer: C=US; ST=Arizona; L=Scottsdale; O=GoDaddy.com, Inc.; OU=http://certs.godaddy.com/repository/; CN=Go Daddy Secure Certificate Authority - G2
+*  SSL certificate verify result: unable to get local issuer certificate (20), continuing anyway.
+*   Certificate level 0: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 2: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+* Connected to api.hit-pay.com (104.20.21.91) port 443
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://api.hit-pay.com/v1/payment-requests
+* [HTTP/2] [1] [:method: POST]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: api.hit-pay.com]
+* [HTTP/2] [1] [:path: /v1/payment-requests]
+* [HTTP/2] [1] [accept: */*]
+* [HTTP/2] [1] [x-business-api-key: c76bbbf2b4df6160ac27712172341c72921220a1ceb4944be8aedb91fd6bebfd]
+* [HTTP/2] [1] [content-type: application/json]
+* [HTTP/2] [1] [x-requested-with: XMLHttpRequest]
+* [HTTP/2] [1] [content-length: 441]
+> POST /v1/payment-requests HTTP/2
+Host: api.hit-pay.com
+Accept: */*
+X-BUSINESS-API-KEY: c76bbbf2b4df6160ac27712172341c72921220a1ceb4944be8aedb91fd6bebfd
+Content-Type: application/json
+X-Requested-With: XMLHttpRequest
+Content-Length: 441
+
+* upload completely sent off: 441 bytes
+< HTTP/2 400 
+< date: Wed, 25 Mar 2026 01:13:46 GMT
+< content-type: application/json
+< server: cloudflare
+< cache-control: no-cache, private
+< treblle-user-id: 9adef539-f3f4-42b1-ad58-01d7f5befb5e
+< content-security-policy: frame-ancestors 'self' ecwid.com *.ecwid.com;upgrade-insecure-requests
+< x-ratelimit-limit: 400
+< x-ratelimit-remaining: 399
+< x-locale: en_US
+< vary: Origin
+< vary: accept-encoding
+< set-cookie: locale=en_US; expires=Thu, 29 Apr 2027 01:13:46 GMT; Max-Age=34560000; path=/; domain=.hit-pay.com; secure; samesite=lax
+< x-content-type-options: nosniff
+< referrer-policy: strict-origin-when-cross-origin
+< via: 1.1 fly.io
+< fly-request-id: 01KMH8W1YXBEP6RV14H6EFKBAQ-sin
+< cf-cache-status: DYNAMIC
+< cf-ray: 9e1a0e12fa045880-SIN
+< 
+* Connection #0 to host api.hit-pay.com left intact
+
+HTTP Code: 400
+Content Type: application/json
+Response Body: {
+    "message": "This payment method does not support cross-currency QR"
+}
+API ERROR: This payment method does not support cross-currency QR
+Error Details: Array
+(
+    [message] => This payment method does not support cross-currency QR
+)
+
+
+=== 2026-03-25 01:13:51 ===
+Raw Input: {"booking_id":"12233661","amount":"43","currency":"SGD","email":"valldjong@gmail.com","name":"testbooking","phone":"32432442","purpose":"Ferry Ticket Booking #12233661","payment_method":"paynow"}
+Decoded Data: Array
+(
+    [booking_id] => 12233661
+    [amount] => 43
+    [currency] => SGD
+    [email] => valldjong@gmail.com
+    [name] => testbooking
+    [phone] => 32432442
+    [purpose] => Ferry Ticket Booking #12233661
+    [payment_method] => paynow
+)
+
+Request URL: https://api.hit-pay.com/v1/payment-requests
+Request Data: {
+    "amount": "43.00",
+    "currency": "sgd",
+    "payment_methods": [
+        "paynow_online"
+    ],
+    "generate_qr": true,
+    "name": "testbooking",
+    "email": "valldjong@gmail.com",
+    "phone": "32432442",
+    "reference_number": "BOOK-12233661-1774401231",
+    "purpose": "Ferry Ticket Booking #12233661",
+    "redirect_url": "https:\/\/batamferrytickets.com\/payment-success.php",
+    "webhook": "https:\/\/batamferrytickets.com\/payment-webhook.php",
+    "send_email": true,
+    "send_sms": true,
+    "allow_repeated_payments": false
+}
+CURL Verbose Output:
+* Host api.hit-pay.com:443 was resolved.
+* IPv6: 2606:4700:10::6814:155b, 2606:4700:10::ac42:aa37
+* IPv4: 104.20.21.91, 172.66.170.55
+*   Trying [2606:4700:10::6814:155b]:443...
+* Immediate connect fail for 2606:4700:10::6814:155b: Cannot assign requested address
+*   Trying [2606:4700:10::ac42:aa37]:443...
+* Immediate connect fail for 2606:4700:10::ac42:aa37: Cannot assign requested address
+*   Trying 104.20.21.91:443...
+* ALPN: curl offers h2,http/1.1
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519MLKEM768 / RSASSA-PSS
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=hit-pay.com
+*  start date: Dec 20 10:38:35 2025 GMT
+*  expire date: Jan 21 10:38:35 2027 GMT
+*  subjectAltName: host "api.hit-pay.com" matched cert's "api.hit-pay.com"
+*  issuer: C=US; ST=Arizona; L=Scottsdale; O=GoDaddy.com, Inc.; OU=http://certs.godaddy.com/repository/; CN=Go Daddy Secure Certificate Authority - G2
+*  SSL certificate verify result: unable to get local issuer certificate (20), continuing anyway.
+*   Certificate level 0: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 2: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+* Connected to api.hit-pay.com (104.20.21.91) port 443
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://api.hit-pay.com/v1/payment-requests
+* [HTTP/2] [1] [:method: POST]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: api.hit-pay.com]
+* [HTTP/2] [1] [:path: /v1/payment-requests]
+* [HTTP/2] [1] [accept: */*]
+* [HTTP/2] [1] [x-business-api-key: c76bbbf2b4df6160ac27712172341c72921220a1ceb4944be8aedb91fd6bebfd]
+* [HTTP/2] [1] [content-type: application/json]
+* [HTTP/2] [1] [x-requested-with: XMLHttpRequest]
+* [HTTP/2] [1] [content-length: 450]
+> POST /v1/payment-requests HTTP/2
+Host: api.hit-pay.com
+Accept: */*
+X-BUSINESS-API-KEY: c76bbbf2b4df6160ac27712172341c72921220a1ceb4944be8aedb91fd6bebfd
+Content-Type: application/json
+X-Requested-With: XMLHttpRequest
+Content-Length: 450
+
+* upload completely sent off: 450 bytes
+< HTTP/2 201 
+< date: Wed, 25 Mar 2026 01:13:52 GMT
+< content-type: application/json
+< server: cloudflare
+< cache-control: no-cache, private
+< treblle-user-id: 9adef539-f3f4-42b1-ad58-01d7f5befb5e
+< content-security-policy: frame-ancestors 'self' ecwid.com *.ecwid.com;upgrade-insecure-requests
+< x-ratelimit-limit: 400
+< x-ratelimit-remaining: 398
+< x-locale: en_US
+< vary: Origin
+< vary: accept-encoding
+< set-cookie: locale=en_US; expires=Thu, 29 Apr 2027 01:13:52 GMT; Max-Age=34560000; path=/; domain=.hit-pay.com; secure; samesite=lax
+< x-content-type-options: nosniff
+< referrer-policy: strict-origin-when-cross-origin
+< via: 1.1 fly.io
+< fly-request-id: 01KMH8W746623SF3CCK4QB6W9M-sin
+< cf-cache-status: DYNAMIC
+< cf-ray: 9e1a0e340fadfd64-SIN
+< 
+* Connection #0 to host api.hit-pay.com left intact
+
+HTTP Code: 201
+Content Type: application/json
+Response Body: {"id":"a1617f83-b0c4-491e-a9b4-094fafff3883","name":"testbooking","email":"valldjong@gmail.com","phone":"32432442","amount":"43.00","currency":"sgd","is_currency_editable":false,"status":"pending","purpose":"Ferry Ticket Booking #12233661","reference_number":"BOOK-12233661-1774401231","payment_methods":["paynow_online"],"url":"https:\/\/securecheckout.hit-pay.com\/payment-request\/@vtl-travel-pte-ltd\/a1617f83-b0c4-491e-a9b4-094fafff3883\/checkout","redirect_url":"https:\/\/batamferrytickets.com\/payment-success.php","webhook":"https:\/\/batamferrytickets.com\/payment-webhook.php","send_sms":true,"send_email":true,"sms_status":"pending","email_status":"pending","allow_repeated_payments":false,"expiry_date":null,"address":null,"line_items":null,"executor_id":null,"created_at":"2026-03-25T09:13:52","updated_at":"2026-03-25T09:13:52","staff_id":null,"business_location_id":null,"metadata":{},"payments":[{"id":"a1617f83-bcf4-4580-8191-8d2876b1aad9","quantity":1,"status":"requires_payment_method","status_reason_code":null,"status_reason":"","buyer_name":"testbooking","buyer_phone":"32432442","buyer_email":"valldjong@gmail.com","currency":"sgd","amount":"43.00","refunded_amount":"0.00","payment_type":"paynow_online","fees":"0.38","fees_currency":"sgd","created_at":"2026-03-25T09:13:52","updated_at":"2026-03-25T09:13:52"}],"qr_code_data":{"qr_code":"00020101021226550009SG.PAYNOW010120210201605883W03010041420260325092212520400005303702540543.005802SG5925VTL Travel Private Limite6009Singapore62290125DICNP1774401232471267B7UF6304e119","qr_code_expiry":null,"qr_image_mime":null}}
+Decoded Response: Array
+(
+    [id] => a1617f83-b0c4-491e-a9b4-094fafff3883
+    [name] => testbooking
+    [email] => valldjong@gmail.com
+    [phone] => 32432442
+    [amount] => 43.00
+    [currency] => sgd
+    [is_currency_editable] => 
+    [status] => pending
+    [purpose] => Ferry Ticket Booking #12233661
+    [reference_number] => BOOK-12233661-1774401231
+    [payment_methods] => Array
+        (
+            [0] => paynow_online
+        )
+
+    [url] => https://securecheckout.hit-pay.com/payment-request/@vtl-travel-pte-ltd/a1617f83-b0c4-491e-a9b4-094fafff3883/checkout
+    [redirect_url] => https://batamferrytickets.com/payment-success.php
+    [webhook] => https://batamferrytickets.com/payment-webhook.php
+    [send_sms] => 1
+    [send_email] => 1
+    [sms_status] => pending
+    [email_status] => pending
+    [allow_repeated_payments] => 
+    [expiry_date] => 
+    [address] => 
+    [line_items] => 
+    [executor_id] => 
+    [created_at] => 2026-03-25T09:13:52
+    [updated_at] => 2026-03-25T09:13:52
+    [staff_id] => 
+    [business_location_id] => 
+    [metadata] => Array
+        (
+        )
+
+    [payments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => a1617f83-bcf4-4580-8191-8d2876b1aad9
+                    [quantity] => 1
+                    [status] => requires_payment_method
+                    [status_reason_code] => 
+                    [status_reason] => 
+                    [buyer_name] => testbooking
+                    [buyer_phone] => 32432442
+                    [buyer_email] => valldjong@gmail.com
+                    [currency] => sgd
+                    [amount] => 43.00
+                    [refunded_amount] => 0.00
+                    [payment_type] => paynow_online
+                    [fees] => 0.38
+                    [fees_currency] => sgd
+                    [created_at] => 2026-03-25T09:13:52
+                    [updated_at] => 2026-03-25T09:13:52
+                )
+
+        )
+
+    [qr_code_data] => Array
+        (
+            [qr_code] => 00020101021226550009SG.PAYNOW010120210201605883W03010041420260325092212520400005303702540543.005802SG5925VTL Travel Private Limite6009Singapore62290125DICNP1774401232471267B7UF6304e119
+            [qr_code_expiry] => 
+            [qr_image_mime] => 
+        )
+
+)
+
+SUCCESS! Payment Request ID: a1617f83-b0c4-491e-a9b4-094fafff3883
+Payment URL: https://securecheckout.hit-pay.com/payment-request/@vtl-travel-pte-ltd/a1617f83-b0c4-491e-a9b4-094fafff3883/checkout
+
+=== 2026-03-25 01:19:02 ===
+Raw Input: {"booking_id":"12233661","amount":"43","currency":"SGD","email":"valldjong@gmail.com","name":"testbooking","phone":"32432442","purpose":"Ferry Ticket Booking #12233661","payment_method":"card"}
+Decoded Data: Array
+(
+    [booking_id] => 12233661
+    [amount] => 43
+    [currency] => SGD
+    [email] => valldjong@gmail.com
+    [name] => testbooking
+    [phone] => 32432442
+    [purpose] => Ferry Ticket Booking #12233661
+    [payment_method] => card
+)
+
+Request URL: https://api.hit-pay.com/v1/payment-requests
+Request Data: {
+    "amount": "43.00",
+    "currency": "sgd",
+    "payment_methods": [
+        "card"
+    ],
+    "name": "testbooking",
+    "email": "valldjong@gmail.com",
+    "phone": "32432442",
+    "reference_number": "BOOK-12233661-1774401542",
+    "purpose": "Ferry Ticket Booking #12233661",
+    "redirect_url": "https:\/\/batamferrytickets.com\/payment-success.php",
+    "webhook": "https:\/\/batamferrytickets.com\/payment-webhook.php",
+    "send_email": true,
+    "send_sms": true,
+    "allow_repeated_payments": false
+}
+CURL Verbose Output:
+* Host api.hit-pay.com:443 was resolved.
+* IPv6: 2606:4700:10::ac42:aa37, 2606:4700:10::6814:155b
+* IPv4: 172.66.170.55, 104.20.21.91
+*   Trying [2606:4700:10::ac42:aa37]:443...
+* Immediate connect fail for 2606:4700:10::ac42:aa37: Cannot assign requested address
+*   Trying [2606:4700:10::6814:155b]:443...
+* Immediate connect fail for 2606:4700:10::6814:155b: Cannot assign requested address
+*   Trying 172.66.170.55:443...
+* ALPN: curl offers h2,http/1.1
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519MLKEM768 / RSASSA-PSS
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=hit-pay.com
+*  start date: Dec 20 10:38:35 2025 GMT
+*  expire date: Jan 21 10:38:35 2027 GMT
+*  subjectAltName: host "api.hit-pay.com" matched cert's "api.hit-pay.com"
+*  issuer: C=US; ST=Arizona; L=Scottsdale; O=GoDaddy.com, Inc.; OU=http://certs.godaddy.com/repository/; CN=Go Daddy Secure Certificate Authority - G2
+*  SSL certificate verify result: unable to get local issuer certificate (20), continuing anyway.
+*   Certificate level 0: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 2: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+* Connected to api.hit-pay.com (172.66.170.55) port 443
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://api.hit-pay.com/v1/payment-requests
+* [HTTP/2] [1] [:method: POST]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: api.hit-pay.com]
+* [HTTP/2] [1] [:path: /v1/payment-requests]
+* [HTTP/2] [1] [accept: */*]
+* [HTTP/2] [1] [x-business-api-key: c76bbbf2b4df6160ac27712172341c72921220a1ceb4944be8aedb91fd6bebfd]
+* [HTTP/2] [1] [content-type: application/json]
+* [HTTP/2] [1] [x-requested-with: XMLHttpRequest]
+* [HTTP/2] [1] [content-length: 422]
+> POST /v1/payment-requests HTTP/2
+Host: api.hit-pay.com
+Accept: */*
+X-BUSINESS-API-KEY: c76bbbf2b4df6160ac27712172341c72921220a1ceb4944be8aedb91fd6bebfd
+Content-Type: application/json
+X-Requested-With: XMLHttpRequest
+Content-Length: 422
+
+* upload completely sent off: 422 bytes
+< HTTP/2 201 
+< date: Wed, 25 Mar 2026 01:19:03 GMT
+< content-type: application/json
+< server: cloudflare
+< cache-control: no-cache, private
+< treblle-user-id: 9adef539-f3f4-42b1-ad58-01d7f5befb5e
+< content-security-policy: frame-ancestors 'self' ecwid.com *.ecwid.com;upgrade-insecure-requests
+< x-ratelimit-limit: 400
+< x-ratelimit-remaining: 399
+< x-locale: en_US
+< vary: Origin
+< vary: accept-encoding
+< set-cookie: locale=en_US; expires=Thu, 29 Apr 2027 01:19:03 GMT; Max-Age=34560000; path=/; domain=.hit-pay.com; secure; samesite=lax
+< x-content-type-options: nosniff
+< referrer-policy: strict-origin-when-cross-origin
+< via: 1.1 fly.io
+< fly-request-id: 01KMH95PJDRGJDJFEA18ESG176-sin
+< cf-cache-status: DYNAMIC
+< cf-ray: 9e1a15ca08f2d846-SIN
+< 
+* Connection #0 to host api.hit-pay.com left intact
+
+HTTP Code: 201
+Content Type: application/json
+Response Body: {"id":"a161815d-c094-48ba-84d7-d0204b8878f8","name":"testbooking","email":"valldjong@gmail.com","phone":"32432442","amount":"43.00","currency":"sgd","is_currency_editable":false,"status":"pending","purpose":"Ferry Ticket Booking #12233661","reference_number":"BOOK-12233661-1774401542","payment_methods":["card"],"url":"https:\/\/securecheckout.hit-pay.com\/payment-request\/@vtl-travel-pte-ltd\/a161815d-c094-48ba-84d7-d0204b8878f8\/checkout","redirect_url":"https:\/\/batamferrytickets.com\/payment-success.php","webhook":"https:\/\/batamferrytickets.com\/payment-webhook.php","send_sms":true,"send_email":true,"sms_status":"pending","email_status":"pending","allow_repeated_payments":false,"expiry_date":null,"address":null,"line_items":null,"executor_id":null,"created_at":"2026-03-25T09:19:03","updated_at":"2026-03-25T09:19:03","staff_id":null,"business_location_id":null,"metadata":{}}
+Decoded Response: Array
+(
+    [id] => a161815d-c094-48ba-84d7-d0204b8878f8
+    [name] => testbooking
+    [email] => valldjong@gmail.com
+    [phone] => 32432442
+    [amount] => 43.00
+    [currency] => sgd
+    [is_currency_editable] => 
+    [status] => pending
+    [purpose] => Ferry Ticket Booking #12233661
+    [reference_number] => BOOK-12233661-1774401542
+    [payment_methods] => Array
+        (
+            [0] => card
+        )
+
+    [url] => https://securecheckout.hit-pay.com/payment-request/@vtl-travel-pte-ltd/a161815d-c094-48ba-84d7-d0204b8878f8/checkout
+    [redirect_url] => https://batamferrytickets.com/payment-success.php
+    [webhook] => https://batamferrytickets.com/payment-webhook.php
+    [send_sms] => 1
+    [send_email] => 1
+    [sms_status] => pending
+    [email_status] => pending
+    [allow_repeated_payments] => 
+    [expiry_date] => 
+    [address] => 
+    [line_items] => 
+    [executor_id] => 
+    [created_at] => 2026-03-25T09:19:03
+    [updated_at] => 2026-03-25T09:19:03
+    [staff_id] => 
+    [business_location_id] => 
+    [metadata] => Array
+        (
+        )
+
+)
+
+SUCCESS! Payment Request ID: a161815d-c094-48ba-84d7-d0204b8878f8
+Payment URL: https://securecheckout.hit-pay.com/payment-request/@vtl-travel-pte-ltd/a161815d-c094-48ba-84d7-d0204b8878f8/checkout
+
+=== 2026-03-25 01:19:24 ===
+Raw Input: {"booking_id":"12233661","amount":"43","currency":"SGD","email":"valldjong@gmail.com","name":"testbooking","phone":"32432442","purpose":"Ferry Ticket Booking #12233661","payment_method":"paynow"}
+Decoded Data: Array
+(
+    [booking_id] => 12233661
+    [amount] => 43
+    [currency] => SGD
+    [email] => valldjong@gmail.com
+    [name] => testbooking
+    [phone] => 32432442
+    [purpose] => Ferry Ticket Booking #12233661
+    [payment_method] => paynow
+)
+
+Request URL: https://api.hit-pay.com/v1/payment-requests
+Request Data: {
+    "amount": "43.00",
+    "currency": "sgd",
+    "payment_methods": [
+        "paynow_online"
+    ],
+    "name": "testbooking",
+    "email": "valldjong@gmail.com",
+    "phone": "32432442",
+    "reference_number": "BOOK-12233661-1774401564",
+    "purpose": "Ferry Ticket Booking #12233661",
+    "redirect_url": "https:\/\/batamferrytickets.com\/payment-success.php",
+    "webhook": "https:\/\/batamferrytickets.com\/payment-webhook.php",
+    "send_email": true,
+    "send_sms": true,
+    "allow_repeated_payments": false
+}
+CURL Verbose Output:
+* Host api.hit-pay.com:443 was resolved.
+* IPv6: 2606:4700:10::ac42:aa37, 2606:4700:10::6814:155b
+* IPv4: 172.66.170.55, 104.20.21.91
+*   Trying [2606:4700:10::ac42:aa37]:443...
+* Immediate connect fail for 2606:4700:10::ac42:aa37: Cannot assign requested address
+*   Trying [2606:4700:10::6814:155b]:443...
+* Immediate connect fail for 2606:4700:10::6814:155b: Cannot assign requested address
+*   Trying 172.66.170.55:443...
+* ALPN: curl offers h2,http/1.1
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519MLKEM768 / RSASSA-PSS
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=hit-pay.com
+*  start date: Dec 20 10:38:35 2025 GMT
+*  expire date: Jan 21 10:38:35 2027 GMT
+*  subjectAltName: host "api.hit-pay.com" matched cert's "api.hit-pay.com"
+*  issuer: C=US; ST=Arizona; L=Scottsdale; O=GoDaddy.com, Inc.; OU=http://certs.godaddy.com/repository/; CN=Go Daddy Secure Certificate Authority - G2
+*  SSL certificate verify result: unable to get local issuer certificate (20), continuing anyway.
+*   Certificate level 0: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 2: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+* Connected to api.hit-pay.com (172.66.170.55) port 443
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://api.hit-pay.com/v1/payment-requests
+* [HTTP/2] [1] [:method: POST]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: api.hit-pay.com]
+* [HTTP/2] [1] [:path: /v1/payment-requests]
+* [HTTP/2] [1] [accept: */*]
+* [HTTP/2] [1] [x-business-api-key: c76bbbf2b4df6160ac27712172341c72921220a1ceb4944be8aedb91fd6bebfd]
+* [HTTP/2] [1] [content-type: application/json]
+* [HTTP/2] [1] [x-requested-with: XMLHttpRequest]
+* [HTTP/2] [1] [content-length: 431]
+> POST /v1/payment-requests HTTP/2
+Host: api.hit-pay.com
+Accept: */*
+X-BUSINESS-API-KEY: c76bbbf2b4df6160ac27712172341c72921220a1ceb4944be8aedb91fd6bebfd
+Content-Type: application/json
+X-Requested-With: XMLHttpRequest
+Content-Length: 431
+
+* upload completely sent off: 431 bytes
+< HTTP/2 201 
+< date: Wed, 25 Mar 2026 01:19:24 GMT
+< content-type: application/json
+< server: cloudflare
+< cache-control: no-cache, private
+< treblle-user-id: 9adef539-f3f4-42b1-ad58-01d7f5befb5e
+< content-security-policy: frame-ancestors 'self' ecwid.com *.ecwid.com;upgrade-insecure-requests
+< x-ratelimit-limit: 400
+< x-ratelimit-remaining: 398
+< x-locale: en_US
+< vary: Origin
+< vary: accept-encoding
+< set-cookie: locale=en_US; expires=Thu, 29 Apr 2027 01:19:24 GMT; Max-Age=34560000; path=/; domain=.hit-pay.com; secure; samesite=lax
+< x-content-type-options: nosniff
+< referrer-policy: strict-origin-when-cross-origin
+< via: 1.1 fly.io
+< fly-request-id: 01KMH96BDD0JQSXPP3X1HFEEJQ-sin
+< cf-cache-status: DYNAMIC
+< cf-ray: 9e1a164f6eda3e13-SIN
+< 
+* Connection #0 to host api.hit-pay.com left intact
+
+HTTP Code: 201
+Content Type: application/json
+Response Body: {"id":"a161817e-8235-457b-8588-0fec5ebe6e99","name":"testbooking","email":"valldjong@gmail.com","phone":"32432442","amount":"43.00","currency":"sgd","is_currency_editable":false,"status":"pending","purpose":"Ferry Ticket Booking #12233661","reference_number":"BOOK-12233661-1774401564","payment_methods":["paynow_online"],"url":"https:\/\/securecheckout.hit-pay.com\/payment-request\/@vtl-travel-pte-ltd\/a161817e-8235-457b-8588-0fec5ebe6e99\/checkout","redirect_url":"https:\/\/batamferrytickets.com\/payment-success.php","webhook":"https:\/\/batamferrytickets.com\/payment-webhook.php","send_sms":true,"send_email":true,"sms_status":"pending","email_status":"pending","allow_repeated_payments":false,"expiry_date":null,"address":null,"line_items":null,"executor_id":null,"created_at":"2026-03-25T09:19:24","updated_at":"2026-03-25T09:19:24","staff_id":null,"business_location_id":null,"metadata":{}}
+Decoded Response: Array
+(
+    [id] => a161817e-8235-457b-8588-0fec5ebe6e99
+    [name] => testbooking
+    [email] => valldjong@gmail.com
+    [phone] => 32432442
+    [amount] => 43.00
+    [currency] => sgd
+    [is_currency_editable] => 
+    [status] => pending
+    [purpose] => Ferry Ticket Booking #12233661
+    [reference_number] => BOOK-12233661-1774401564
+    [payment_methods] => Array
+        (
+            [0] => paynow_online
+        )
+
+    [url] => https://securecheckout.hit-pay.com/payment-request/@vtl-travel-pte-ltd/a161817e-8235-457b-8588-0fec5ebe6e99/checkout
+    [redirect_url] => https://batamferrytickets.com/payment-success.php
+    [webhook] => https://batamferrytickets.com/payment-webhook.php
+    [send_sms] => 1
+    [send_email] => 1
+    [sms_status] => pending
+    [email_status] => pending
+    [allow_repeated_payments] => 
+    [expiry_date] => 
+    [address] => 
+    [line_items] => 
+    [executor_id] => 
+    [created_at] => 2026-03-25T09:19:24
+    [updated_at] => 2026-03-25T09:19:24
+    [staff_id] => 
+    [business_location_id] => 
+    [metadata] => Array
+        (
+        )
+
+)
+
+SUCCESS! Payment Request ID: a161817e-8235-457b-8588-0fec5ebe6e99
+Payment URL: https://securecheckout.hit-pay.com/payment-request/@vtl-travel-pte-ltd/a161817e-8235-457b-8588-0fec5ebe6e99/checkout
